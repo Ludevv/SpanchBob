@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(rgb(6, 255, 213), rgb(0, 110, 255))
+        }
+
+        .bg {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .spanchBob {
+            position: absolute;
+            width: 300px;
+            height: 253px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+        }
+
+        img {
+            width: 100%;
+            border: 3px solid black;
+            z-index: 10;
+        }
+
+        .eyeLeft,
+        .eyeRight {
+            position: absolute;
+            top: 17%;
+            width: 73px;
+            height: 73px;
+            background: #fff;
+            border-radius: 40px;
+
+        }
+
+        .eyeLeft {
+            left: 20.5%;
+        }
+
+        .eyeRight {
+            right: 21.5%;
+        }
+
+        .eye:after {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #000;
+            border-radius: 20px;
+            border: 10px solid rgb(10, 208, 235);
+            content: " ";
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <div class="spanchBob">
+            <img src="span.png" alt="">
+            <div class="eye eyeLeft">
+                <div class="eyeInner"></div>
+            </div>
+            <div class="eye eyeRight">
+                <div class="eyeInner"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const moveEyes = function (e) {
+            const eyes = document.querySelectorAll('.eye');
+
+            [].forEach.call(eyes, function (eye) {
+
+                let mouseX = eye.getBoundingClientRect().right;
+                if (eye.classList.contains('eyeLeft')) {
+                    mouseX = eye.getBoundingClientRect().left;
+                }
+
+                let mouseY = eye.getBoundingClientRect().top;
+                let radianDegrees = Math.atan2(e.pageX - mouseX, e.pageY - mouseY);
+                let rotationDegrees = radianDegrees * (180 / Math.PI) * -1 + 180;
+
+                eye.style.transform = `rotate(${rotationDegrees}deg)`;
+            });
+        }
+
+
+        setInterval(document.body.addEventListener('mousemove', moveEyes), 100)
+    </script>
+</body>
+
+</html>
