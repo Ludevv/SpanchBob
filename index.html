@@ -29,6 +29,7 @@
         }
 
         img {
+            position: relative;
             width: 100%;
             border: 3px solid black;
             z-index: 10;
@@ -42,7 +43,6 @@
             height: 73px;
             background: #fff;
             border-radius: 40px;
-
         }
 
         .eyeLeft {
@@ -78,15 +78,6 @@
         </div>
     </div>
     <script>
-        const spanchBobDiv = document.querySelector('.spanchBob');
-
-
-        // spanchBobDiv.style.top = `${divY}px`;
-        // spanchBobDiv.style.left = `${divX}px`;
-        // let drawActive = false;
-        // let insertDivX;
-        // let insertDivY;
-
         const moveEyes = function (e) {
             const eyes = document.querySelectorAll('.eye');
 
@@ -101,7 +92,6 @@
                 eye.style.transform = `rotate(${rotationDegrees}deg)`;
             });
         }
-
         document.body.addEventListener('mousemove', moveEyes)
     </script>
 </body>
