@@ -78,17 +78,23 @@
         </div>
     </div>
     <script>
+        const spanchBobDiv = document.querySelector('.spanchBob');
+
+
+        // spanchBobDiv.style.top = `${divY}px`;
+        // spanchBobDiv.style.left = `${divX}px`;
+        // let drawActive = false;
+        // let insertDivX;
+        // let insertDivY;
+
         const moveEyes = function (e) {
             const eyes = document.querySelectorAll('.eye');
 
             [].forEach.call(eyes, function (eye) {
 
                 let mouseX = eye.getBoundingClientRect().right;
-                if (eye.classList.contains('eyeLeft')) {
-                    mouseX = eye.getBoundingClientRect().left;
-                }
-
                 let mouseY = eye.getBoundingClientRect().top;
+
                 let radianDegrees = Math.atan2(e.pageX - mouseX, e.pageY - mouseY);
                 let rotationDegrees = radianDegrees * (180 / Math.PI) * -1 + 180;
 
@@ -96,8 +102,7 @@
             });
         }
 
-
-        setInterval(document.body.addEventListener('mousemove', moveEyes), 100)
+        document.body.addEventListener('mousemove', moveEyes)
     </script>
 </body>
 
