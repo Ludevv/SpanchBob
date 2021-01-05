@@ -28,7 +28,7 @@
             background: #fff;
         }
 
-        img {
+        img.span {
             position: relative;
             width: 100%;
             border: 3px solid black;
@@ -62,13 +62,31 @@
             border: 10px solid rgb(10, 208, 235);
             content: " ";
         }
+
+        .patric {
+            position: absolute;
+            height: 40%;
+            cursor: pointer;
+            width: 250px;
+            background-image: url('patric.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        /* img.pat {
+            height: 100%;
+        } */
     </style>
 </head>
 
 <body>
     <div class="bg">
+        <div class="patric">
+            <!-- <img class="pat" src="patric.png" alt="">?S -->
+        </div>
+
         <div class="spanchBob">
-            <img src="span.png" alt="">
+            <img class="span" src="span.png" alt="">
             <div class="eye eyeLeft">
                 <div class="eyeInner"></div>
             </div>
@@ -93,6 +111,36 @@
             });
         }
         document.body.addEventListener('mousemove', moveEyes)
+
+
+
+        const patric = document.querySelector('.patric');
+        let activeDrawing = false;
+        let offsetX;
+        let offsetY;
+
+        patric.addEventListener('mousedown', (e) => {
+            activeDrawing = !activeDrawing;
+            offsetX = e.offsetX;
+            offsetY = e.offsetY;
+        })
+
+        window.addEventListener('mousemove', (e) => {
+            if (activeDrawing) {
+                x = e.clientX - offsetX;
+                y = e.clientY - offsetY;
+
+                patric.style.top = `${y}px`;
+                patric.style.left = `${x}px`;
+            }
+
+        })
+
+
+        patric.addEventListener('mouseup', () => {
+            console.log(activeDrawing);
+            activeDrawing = !activeDrawing;
+        })
     </script>
 </body>
 
