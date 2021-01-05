@@ -67,24 +67,74 @@
 
         .patric {
             position: absolute;
+            top: 100px;
+            left: 55px;
             height: 40%;
             cursor: pointer;
             width: 250px;
             background-image: url('patric.png');
             background-size: contain;
             background-repeat: no-repeat;
+            animation: shakePatric 4s linear infinite;
         }
 
-        /* img.pat {
-            height: 100%;
-        } */
+        @keyframes shakePatric {
+            0% {
+                transform: translateY(0%);
+            }
+
+            2% {
+                transform: translateY(-5%);
+            }
+
+            4% {
+                transform: translateY(5%);
+            }
+
+            7% {
+                transform: translateY(-5%);
+            }
+
+            10% {
+                transform: translateY(5%);
+            }
+
+            13% {
+                transform: translateY(0%);
+            }
+
+
+        }
+
+        .cloud {
+            position: absolute;
+            display: block;
+            width: 150px;
+            left: -50px;
+            top: -70px;
+
+        }
+
+        .textInCloud {
+            position: absolute;
+            display: block;
+            top: -25px;
+            left: -35px;
+            color: black;
+            font-family: arial;
+            font-weight: 600;
+            z-index: 5;
+
+        }
     </style>
 </head>
 
 <body>
     <div class="bg">
+
         <div class="patric">
-            <!-- <img class="pat" src="patric.png" alt="">?S -->
+            <img src="cloud.png" alt="" class="cloud" srcset="">
+            <span class="textInCloud">drag & drop me</span>
         </div>
 
         <div class="spanchBob">
@@ -98,6 +148,7 @@
         </div>
     </div>
     <script>
+        //Poruszanie oczami
         const moveEyes = function (e) {
             const eyes = document.querySelectorAll('.eye');
 
@@ -113,9 +164,11 @@
             });
         }
         document.body.addEventListener('mousemove', moveEyes)
+        ///////////////////////////////////////////////////////////////////////////
 
-
-
+        //Poruszanie Patrickiem i animacje
+        const cloud = document.querySelector('.cloud');
+        const textInCloud = document.querySelector('.textInCloud');
         const patric = document.querySelector('.patric');
         let activeDrawing = false;
         let offsetX;
@@ -125,6 +178,12 @@
             activeDrawing = !activeDrawing;
             offsetX = e.offsetX;
             offsetY = e.offsetY;
+
+            if (activeDrawing) {
+                patric.style.animationPlayState = "paused";
+                cloud.style.display = 'none';
+                textInCloud.style.display = 'none';
+            }
         })
 
         window.addEventListener('mousemove', (e) => {
@@ -138,11 +197,16 @@
 
         })
 
-
         patric.addEventListener('mouseup', () => {
             console.log(activeDrawing);
             activeDrawing = !activeDrawing;
+            if (!activeDrawing) {
+                patric.style.animationPlayState = "running";
+                cloud.style.display = 'block';
+                textInCloud.style.display = 'block';
+            }
         })
+        /////////////////////////////////////////////////////////////////////////////
     </script>
 </body>
 
