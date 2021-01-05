@@ -67,7 +67,7 @@
 
         .patric {
             position: absolute;
-            top: 100px;
+            bottom: 30px;
             left: 55px;
             height: 40%;
             cursor: pointer;
@@ -76,6 +76,7 @@
             background-size: contain;
             background-repeat: no-repeat;
             animation: shakePatric 4s linear infinite;
+            z-index: 2;
         }
 
         @keyframes shakePatric {
@@ -124,6 +125,109 @@
             font-family: arial;
             font-weight: 600;
             z-index: 5;
+        }
+
+        .star {
+            position: absolute;
+            right: 0;
+            bottom: 10%;
+            transform: scale(0);
+            animation: seaStar 20s linear infinite;
+            z-index: 1;
+        }
+
+        .star img {
+            height: 100%;
+        }
+
+        @keyframes seaStar {
+            0% {
+                transform: scale(0);
+                z-index: 1;
+            }
+
+            50% {
+                transform: scale(0.8);
+                z-index: 1;
+            }
+
+            55% {
+                transform: scale(0.8);
+                bottom: 10%;
+                z-index: 6;
+            }
+
+            90% {
+                transform: scale(0.8);
+                bottom: -60%;
+                z-index: 6;
+            }
+
+            100% {
+                transform: scale(0.8);
+                bottom: -60%;
+                z-index: 6;
+            }
+
+
+        }
+
+        .redFish {
+            position: absolute;
+            right: -200px;
+            top: 50px;
+            height: 100px;
+            width: 180px;
+            animation: swimmingFish 35s linear infinite;
+        }
+
+        .red,
+        .blue {
+            height: 100%;
+        }
+
+        .blueFish {
+            position: absolute;
+            right: -200px;
+            top: 100px;
+            height: 100px;
+            width: 160px;
+            animation: swimmingFish 26s 1s linear infinite;
+        }
+
+
+        @keyframes swimmingFish {
+            0% {
+                right: -200px;
+                transform: scaleX(1)
+            }
+
+            5% {
+                right: -200px;
+                transform: scaleX(1)
+            }
+
+
+            45% {
+                right: 120%;
+                transform: scaleX(1)
+            }
+
+            50% {
+                right: 120%;
+                transform: scaleX(-1)
+            }
+
+            90% {
+                right: -200px;
+                transform: scaleX(-1)
+            }
+
+            100% {
+                right: -200px;
+                transform: scaleX(-1)
+            }
+
 
         }
     </style>
@@ -146,6 +250,18 @@
                 <div class="eyeInner"></div>
             </div>
         </div>
+
+        <div class="star">
+            <img src="star.png" alt="" srcset="">
+        </div>
+
+        <div class="redFish">
+            <img src="redFish.png" class="red" alt="" srcset="">
+        </div>
+        <div class="blueFish">
+            <img src="blueFish.png" class="blue" alt="" srcset="">
+        </div>
+
     </div>
     <script>
         //Poruszanie oczami
