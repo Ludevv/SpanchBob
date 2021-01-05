@@ -16,6 +16,7 @@
             position: relative;
             width: 100vw;
             height: 100vh;
+            overflow: hidden;
         }
 
         .spanchBob {
@@ -25,32 +26,33 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: #fff;
+            /* background: #fff; */
         }
 
         img.span {
             position: relative;
             width: 100%;
-            border: 3px solid black;
+            /* border: 3px solid black; */
             z-index: 10;
         }
 
         .eyeLeft,
         .eyeRight {
             position: absolute;
-            top: 17%;
-            width: 73px;
-            height: 73px;
+            top: 21%;
+            width: 60px;
+            height: 60px;
             background: #fff;
-            border-radius: 40px;
+            border-radius: 60px;
+            border: 12px solid white;
         }
 
         .eyeLeft {
-            left: 20.5%;
+            left: 23.5%;
         }
 
         .eyeRight {
-            right: 21.5%;
+            right: 21%;
         }
 
         .eye:after {
@@ -86,7 +88,7 @@
         </div>
 
         <div class="spanchBob">
-            <img class="span" src="span.png" alt="">
+            <img class="span" src="span1.png" alt="">
             <div class="eye eyeLeft">
                 <div class="eyeInner"></div>
             </div>
